@@ -1,0 +1,1518 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "Centrifuge Spoke",
+    "contract": {
+      "abi": [
+        {
+          "type": "function",
+          "name": "deposit",
+          "inputs": [
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "scId",
+              "type": "bytes16",
+              "internalType": "ShareClassId"
+            },
+            {
+              "name": "asset",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "tokenId",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "amount",
+              "type": "uint128",
+              "internalType": "uint128"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "noteDeposit",
+          "inputs": [
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "scId",
+              "type": "bytes16",
+              "internalType": "ShareClassId"
+            },
+            {
+              "name": "asset",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "tokenId",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "amount",
+              "type": "uint128",
+              "internalType": "uint128"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "withdraw",
+          "inputs": [
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "scId",
+              "type": "bytes16",
+              "internalType": "ShareClassId"
+            },
+            {
+              "name": "asset",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "tokenId",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "receiver",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "amount",
+              "type": "uint128",
+              "internalType": "uint128"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "reserve",
+          "inputs": [
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "scId",
+              "type": "bytes16",
+              "internalType": "ShareClassId"
+            },
+            {
+              "name": "asset",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "tokenId",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "amount",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "reserver",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "reason",
+              "type": "bytes32",
+              "internalType": "bytes32"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "unreserve",
+          "inputs": [
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "scId",
+              "type": "bytes16",
+              "internalType": "ShareClassId"
+            },
+            {
+              "name": "asset",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "tokenId",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "amount",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "reserver",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "reason",
+              "type": "bytes32",
+              "internalType": "bytes32"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "withdrawReserved",
+          "inputs": [
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "scId",
+              "type": "bytes16",
+              "internalType": "ShareClassId"
+            },
+            {
+              "name": "asset",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "tokenId",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "receiver",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "amount",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "reserver",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "reason",
+              "type": "bytes32",
+              "internalType": "bytes32"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "issue",
+          "inputs": [
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "scId",
+              "type": "bytes16",
+              "internalType": "ShareClassId"
+            },
+            {
+              "name": "to",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "shares",
+              "type": "uint128",
+              "internalType": "uint128"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "revoke",
+          "inputs": [
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "scId",
+              "type": "bytes16",
+              "internalType": "ShareClassId"
+            },
+            {
+              "name": "shares",
+              "type": "uint128",
+              "internalType": "uint128"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "withdrawShares",
+          "inputs": [
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "scId",
+              "type": "bytes16",
+              "internalType": "ShareClassId"
+            },
+            {
+              "name": "receiver",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "amount",
+              "type": "uint128",
+              "internalType": "uint128"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "transferSharesFrom",
+          "inputs": [
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "scId",
+              "type": "bytes16",
+              "internalType": "ShareClassId"
+            },
+            {
+              "name": "sender_",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "from",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "to",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "amount",
+              "type": "uint256",
+              "internalType": "uint256"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "crosschainTransferShares",
+          "inputs": [
+            {
+              "name": "centrifugeId",
+              "type": "uint16",
+              "internalType": "uint16"
+            },
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "scId",
+              "type": "bytes16",
+              "internalType": "ShareClassId"
+            },
+            {
+              "name": "receiver",
+              "type": "bytes32",
+              "internalType": "bytes32"
+            },
+            {
+              "name": "amount",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "remoteExtraGasLimit",
+              "type": "uint128",
+              "internalType": "uint128"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "crosschainTransferShares",
+          "inputs": [
+            {
+              "name": "centrifugeId",
+              "type": "uint16",
+              "internalType": "uint16"
+            },
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "scId",
+              "type": "bytes16",
+              "internalType": "ShareClassId"
+            },
+            {
+              "name": "receiver",
+              "type": "bytes32",
+              "internalType": "bytes32"
+            },
+            {
+              "name": "sender_",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "owner",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "amount",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "extraGasLimit",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "remoteExtraGasLimit",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "refund",
+              "type": "address",
+              "internalType": "address"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "registerAsset",
+          "inputs": [
+            {
+              "name": "centrifugeId",
+              "type": "uint16",
+              "internalType": "uint16"
+            },
+            {
+              "name": "asset",
+              "type": "address",
+              "internalType": "address"
+            },
+            {
+              "name": "tokenId",
+              "type": "uint256",
+              "internalType": "uint256"
+            },
+            {
+              "name": "refund",
+              "type": "address",
+              "internalType": "address"
+            }
+          ],
+          "outputs": [
+            {
+              "name": "assetId",
+              "type": "uint128",
+              "internalType": "AssetId"
+            }
+          ],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "request",
+          "inputs": [
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "scId",
+              "type": "bytes16",
+              "internalType": "ShareClassId"
+            },
+            {
+              "name": "assetId",
+              "type": "uint128",
+              "internalType": "AssetId"
+            },
+            {
+              "name": "payload",
+              "type": "bytes",
+              "internalType": "bytes"
+            },
+            {
+              "name": "extraGasLimit",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "unpaid",
+              "type": "bool",
+              "internalType": "bool"
+            },
+            {
+              "name": "refund",
+              "type": "address",
+              "internalType": "address"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "submitQueuedAssets",
+          "inputs": [
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "scId",
+              "type": "bytes16",
+              "internalType": "ShareClassId"
+            },
+            {
+              "name": "assetId",
+              "type": "uint128",
+              "internalType": "AssetId"
+            },
+            {
+              "name": "extraGasLimit",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "refund",
+              "type": "address",
+              "internalType": "address"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "submitQueuedShares",
+          "inputs": [
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "scId",
+              "type": "bytes16",
+              "internalType": "ShareClassId"
+            },
+            {
+              "name": "extraGasLimit",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "refund",
+              "type": "address",
+              "internalType": "address"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
+          "name": "managerCall",
+          "inputs": [
+            {
+              "name": "poolId",
+              "type": "uint64",
+              "internalType": "PoolId"
+            },
+            {
+              "name": "target",
+              "type": "bytes32",
+              "internalType": "bytes32"
+            },
+            {
+              "name": "payload",
+              "type": "bytes",
+              "internalType": "bytes"
+            },
+            {
+              "name": "extraGasLimit",
+              "type": "uint128",
+              "internalType": "uint128"
+            },
+            {
+              "name": "refund",
+              "type": "address",
+              "internalType": "address"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        }
+      ],
+      "deployments": [
+        {
+          "chainId": 1,
+          "address": "0xdEAdbeeF00000000000000000000000000000011"
+        },
+        {
+          "chainId": 10,
+          "address": "0xdEAdbeeF00000000000000000000000000000011"
+        },
+        {
+          "chainId": 56,
+          "address": "0xdEAdbeeF00000000000000000000000000000011"
+        },
+        {
+          "chainId": 143,
+          "address": "0xdEAdbeeF00000000000000000000000000000011"
+        },
+        {
+          "chainId": 196,
+          "address": "0xdEAdbeeF00000000000000000000000000000011"
+        },
+        {
+          "chainId": 999,
+          "address": "0xdEAdbeeF00000000000000000000000000000011"
+        },
+        {
+          "chainId": 1672,
+          "address": "0xdEAdbeeF00000000000000000000000000000011"
+        },
+        {
+          "chainId": 8453,
+          "address": "0xdEAdbeeF00000000000000000000000000000011"
+        },
+        {
+          "chainId": 42161,
+          "address": "0xdEAdbeeF00000000000000000000000000000011"
+        },
+        {
+          "chainId": 43114,
+          "address": "0xdEAdbeeF00000000000000000000000000000011"
+        },
+        {
+          "chainId": 98866,
+          "address": "0xdEAdbeeF00000000000000000000000000000011"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "owner": "Centrifuge",
+    "info": {
+      "url": "https://centrifuge.io"
+    },
+    "contractName": "Centrifuge Spoke"
+  },
+  "display": {
+    "formats": {
+      "deposit(uint64 poolId, bytes16 scId, address asset, uint256 tokenId, uint128 amount)": {
+        "intent": "Deposit into pool",
+        "fields": [
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.asset",
+            "label": "Asset",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.tokenId",
+            "label": "Token ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "#.asset"
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "noteDeposit(uint64 poolId, bytes16 scId, address asset, uint256 tokenId, uint128 amount)": {
+        "intent": "Note deposit",
+        "fields": [
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.asset",
+            "label": "Asset",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.tokenId",
+            "label": "Token ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "#.asset"
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "withdraw(uint64 poolId, bytes16 scId, address asset, uint256 tokenId, address receiver, uint128 amount)": {
+        "intent": "Withdraw from pool",
+        "fields": [
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.asset",
+            "label": "Asset",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.tokenId",
+            "label": "Token ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.receiver",
+            "label": "Send assets to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "#.asset"
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "reserve(uint64 poolId, bytes16 scId, address asset, uint256 tokenId, uint128 amount, address reserver, bytes32 reason)": {
+        "intent": "Reserve assets",
+        "fields": [
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.asset",
+            "label": "Asset",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.tokenId",
+            "label": "Token ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "#.asset"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.reserver",
+            "label": "Reserver",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.reason",
+            "label": "Reason",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "unreserve(uint64 poolId, bytes16 scId, address asset, uint256 tokenId, uint128 amount, address reserver, bytes32 reason)": {
+        "intent": "Unreserve assets",
+        "fields": [
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.asset",
+            "label": "Asset",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.tokenId",
+            "label": "Token ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "#.asset"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.reserver",
+            "label": "Reserver",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.reason",
+            "label": "Reason",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "withdrawReserved(uint64 poolId, bytes16 scId, address asset, uint256 tokenId, address receiver, uint128 amount, address reserver, bytes32 reason)": {
+        "intent": "Withdraw reserved assets",
+        "fields": [
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.asset",
+            "label": "Asset",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.tokenId",
+            "label": "Token ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.receiver",
+            "label": "Send assets to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.amount",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "#.asset"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.reserver",
+            "label": "Reserver",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.reason",
+            "label": "Reason",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "issue(uint64 poolId, bytes16 scId, address to, uint128 shares)": {
+        "intent": "Issue shares",
+        "fields": [
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.to",
+            "label": "Issue to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.shares",
+            "label": "Shares",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "revoke(uint64 poolId, bytes16 scId, uint128 shares)": {
+        "intent": "Revoke shares",
+        "fields": [
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.shares",
+            "label": "Shares",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "withdrawShares(uint64 poolId, bytes16 scId, address receiver, uint128 amount)": {
+        "intent": "Withdraw shares",
+        "fields": [
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.receiver",
+            "label": "Send shares to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.amount",
+            "label": "Shares",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "transferSharesFrom(uint64 poolId, bytes16 scId, address sender_, address from, address to, uint256 amount)": {
+        "intent": "Transfer shares",
+        "fields": [
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.sender_",
+            "label": "Sender",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.from",
+            "label": "From",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.to",
+            "label": "To",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.amount",
+            "label": "Shares",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "crosschainTransferShares(uint16 centrifugeId, uint64 poolId, bytes16 scId, bytes32 receiver, uint128 amount, uint128 remoteExtraGasLimit)": {
+        "intent": "Transfer shares cross-chain",
+        "fields": [
+          {
+            "path": "#.centrifugeId",
+            "label": "Centrifuge chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.receiver",
+            "label": "Recipient",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.amount",
+            "label": "Shares",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.remoteExtraGasLimit",
+            "label": "Dest. extra gas",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "crosschainTransferShares(uint16 centrifugeId, uint64 poolId, bytes16 scId, bytes32 receiver, address sender_, address owner, uint128 amount, uint128 extraGasLimit, uint128 remoteExtraGasLimit, address refund)": {
+        "intent": "Transfer shares cross-chain",
+        "fields": [
+          {
+            "path": "#.centrifugeId",
+            "label": "Centrifuge chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.receiver",
+            "label": "Recipient",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.sender_",
+            "label": "Sender",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.owner",
+            "label": "Owner of the shares",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.amount",
+            "label": "Shares",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.extraGasLimit",
+            "label": "Extra gas limit",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.remoteExtraGasLimit",
+            "label": "Dest. extra gas",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "registerAsset(uint16 centrifugeId, address asset, uint256 tokenId, address refund)": {
+        "intent": "Register asset",
+        "fields": [
+          {
+            "path": "#.centrifugeId",
+            "label": "Centrifuge chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.asset",
+            "label": "Asset",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "#.tokenId",
+            "label": "Token ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "request(uint64 poolId, bytes16 scId, uint128 assetId, bytes payload, uint128 extraGasLimit, bool unpaid, address refund)": {
+        "intent": "Send request to hub",
+        "fields": [
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.assetId",
+            "label": "Asset ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.payload",
+            "label": "Payload",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.extraGasLimit",
+            "label": "Extra gas limit",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.unpaid",
+            "label": "Unpaid mode",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "submitQueuedAssets(uint64 poolId, bytes16 scId, uint128 assetId, uint128 extraGasLimit, address refund)": {
+        "intent": "Submit queued assets",
+        "fields": [
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.assetId",
+            "label": "Asset ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.extraGasLimit",
+            "label": "Extra gas limit",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "submitQueuedShares(uint64 poolId, bytes16 scId, uint128 extraGasLimit, address refund)": {
+        "intent": "Submit queued shares",
+        "fields": [
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.extraGasLimit",
+            "label": "Extra gas limit",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "managerCall(uint64 poolId, bytes32 target, bytes payload, uint128 extraGasLimit, address refund)": {
+        "intent": "Manager call",
+        "fields": [
+          {
+            "path": "#.poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.target",
+            "label": "Target",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.payload",
+            "label": "Payload",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.extraGasLimit",
+            "label": "Extra gas limit",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "#.refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      }
+    }
+  }
+}
