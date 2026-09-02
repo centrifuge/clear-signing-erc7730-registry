@@ -42,7 +42,8 @@
             "label": "Pool currency",
             "value": "840"
           }
-        ]
+        ],
+        "interpolatedIntent": "Create pool 281474976710657 with admin Alice"
       }
     },
     {
@@ -68,7 +69,8 @@
             "label": "Salt",
             "value": "0x0000000000000000000000000000000000000000000000000000000000000001"
           }
-        ]
+        ],
+        "interpolatedIntent": "Add share class CFGA to pool 281474976710657"
       }
     },
     {
@@ -94,7 +96,8 @@
             "label": "Symbol",
             "value": "CFGB"
           }
-        ]
+        ],
+        "interpolatedIntent": "Rename share class to Class B (CFGB)"
       }
     },
     {
@@ -112,7 +115,8 @@
             "label": "Metadata",
             "value": "0xabcd"
           }
-        ]
+        ],
+        "interpolatedIntent": "Set metadata of pool 281474976710657"
       }
     },
     {
@@ -130,7 +134,8 @@
             "label": "Pool currency",
             "value": "840"
           }
-        ]
+        ],
+        "interpolatedIntent": "Set pool 281474976710657 currency to 840"
       }
     },
     {
@@ -152,7 +157,8 @@
             "label": "Can manage",
             "value": "true"
           }
-        ]
+        ],
+        "interpolatedIntent": "Set hub manager Alice to true"
       }
     },
     {
@@ -186,7 +192,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Set Spoke manager on chain 2 to true"
       }
     },
     {
@@ -204,7 +211,8 @@
             "label": "Policy",
             "value": "Std Hub Policy"
           }
-        ]
+        ],
+        "interpolatedIntent": "Set pool 281474976710657 policy to Std Hub Policy"
       }
     },
     {
@@ -230,7 +238,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Set spoke policy on chain 2"
       }
     },
     {
@@ -260,7 +269,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Set request manager on chain 2 to Batch Request Manager"
       }
     },
     {
@@ -278,7 +288,8 @@
             "label": "Hook",
             "value": "Snapshot Hook"
           }
-        ]
+        ],
+        "interpolatedIntent": "Set snapshot hook of pool 281474976710657 to Snapshot Hook"
       }
     },
     {
@@ -296,7 +307,8 @@
             "label": "Hook",
             "value": "Snapshot Hook"
           }
-        ]
+        ],
+        "interpolatedIntent": "Set bridging hook of pool 281474976710657 to Snapshot Hook"
       }
     },
     {
@@ -314,7 +326,8 @@
             "label": "Call data",
             "value": "0x1234"
           }
-        ]
+        ],
+        "interpolatedIntent": "Initiate an authorization for pool 281474976710657"
       }
     },
     {
@@ -332,7 +345,8 @@
             "label": "Call data",
             "value": "0x1234"
           }
-        ]
+        ],
+        "interpolatedIntent": "Cancel an authorization for pool 281474976710657"
       }
     },
     {
@@ -358,7 +372,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Authorize a spoke call on chain 2"
       }
     },
     {
@@ -384,7 +399,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Unauthorize a spoke call on chain 2"
       }
     },
     {
@@ -406,7 +422,8 @@
             "label": "Debit normal",
             "value": "true"
           }
-        ]
+        ],
+        "interpolatedIntent": "Create account 101 in pool 281474976710657"
       }
     },
     {
@@ -428,7 +445,8 @@
             "label": "Metadata",
             "value": "0xabcd"
           }
-        ]
+        ],
+        "interpolatedIntent": "Set metadata of account 101"
       }
     },
     {
@@ -458,7 +476,8 @@
             "label": "Account ID",
             "value": "101"
           }
-        ]
+        ],
+        "interpolatedIntent": "Point Value increase of asset 5 at account 101"
       }
     },
     {
@@ -484,7 +503,8 @@
             "label": "Valuation",
             "value": "Oracle Valuation"
           }
-        ]
+        ],
+        "interpolatedIntent": "Value holding of asset 5 by Oracle Valuation"
       }
     },
     {
@@ -506,7 +526,8 @@
             "label": "Asset ID",
             "value": "5"
           }
-        ]
+        ],
+        "interpolatedIntent": "Revalue holding of asset 5"
       }
     },
     {
@@ -536,7 +557,8 @@
             "label": "Amount change",
             "value": "1234500000"
           }
-        ]
+        ],
+        "interpolatedIntent": "Change amount of asset 5 by 1234500000, increase true"
       }
     },
     {
@@ -566,7 +588,8 @@
             "label": "Value change",
             "value": "1234500000"
           }
-        ]
+        ],
+        "interpolatedIntent": "Change value of asset 5 by 1234500000, increase false"
       }
     },
     {
@@ -588,7 +611,8 @@
             "label": "Price per share",
             "value": "1000000000000000000"
           }
-        ]
+        ],
+        "interpolatedIntent": "Set share price of pool 281474976710657 to 1000000000000000000"
       }
     },
     {
@@ -614,7 +638,8 @@
             "label": "Computed at",
             "value": "2026-01-01 00:00:00Z"
           }
-        ]
+        ],
+        "interpolatedIntent": "Set share price to 1000000000000000000 as of 2026-01-01 00:00:00Z"
       }
     },
     {
@@ -636,7 +661,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Notify pool 281474976710657 to chain 2"
       }
     },
     {
@@ -674,7 +700,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Notify share class to chain 2"
       }
     },
     {
@@ -704,7 +731,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Notify share metadata to chain 2"
       }
     },
     {
@@ -730,7 +758,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Notify share price to chain 2"
       }
     },
     {
@@ -756,7 +785,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Notify price of asset 5"
       }
     },
     {
@@ -798,7 +828,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Deploy and link a vault for asset 5"
       }
     },
     {
@@ -832,7 +863,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Update share restrictions on chain 2"
       }
     },
     {
@@ -870,7 +902,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Send a request callback for asset 5"
       }
     },
     {
@@ -908,7 +941,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Call 0x0000000000000000000000002222222222222222222222222222222222222222 on chain 2 for pool 281474976710657"
       }
     },
     {

@@ -48,7 +48,8 @@
             "label": "Vault",
             "value": "Centrifuge Async Vault"
           }
-        ]
+        ],
+        "interpolatedIntent": "Let anyone claim from Centrifuge Async Vault"
       }
     },
     {
@@ -62,7 +63,8 @@
             "label": "Vault",
             "value": "Centrifuge Async Vault"
           }
-        ]
+        ],
+        "interpolatedIntent": "Stop anyone claiming from Centrifuge Async Vault"
       }
     },
     {
@@ -88,7 +90,8 @@
             "label": "Owner of the assets",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Request a deposit of 1234500000 into Centrifuge Async Vault"
       }
     },
     {
@@ -114,7 +117,8 @@
             "label": "Owner of the assets",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Deposit 1234500000 into Centrifuge Sync Deposit Vault"
       }
     },
     {
@@ -136,7 +140,8 @@
             "label": "Controller",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Claim a deposit from Centrifuge Async Vault to Alice"
       }
     },
     {
@@ -150,7 +155,8 @@
             "label": "Vault",
             "value": "Centrifuge Async Vault"
           }
-        ]
+        ],
+        "interpolatedIntent": "Cancel a deposit request on Centrifuge Async Vault"
       }
     },
     {
@@ -172,7 +178,8 @@
             "label": "Controller",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Claim a cancelled deposit to Alice"
       }
     },
     {
@@ -198,7 +205,8 @@
             "label": "Owner of the shares",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Request a redemption of 2500000000000000000 from Centrifuge Async Vault"
       }
     },
     {
@@ -220,7 +228,8 @@
             "label": "Controller",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Claim a redemption from Centrifuge Async Vault to Alice"
       }
     },
     {
@@ -234,7 +243,8 @@
             "label": "Vault",
             "value": "Centrifuge Async Vault"
           }
-        ]
+        ],
+        "interpolatedIntent": "Cancel a redemption request on Centrifuge Async Vault"
       }
     },
     {
@@ -256,7 +266,8 @@
             "label": "Controller",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Claim a cancelled redemption to Alice"
       }
     },
     {
@@ -298,7 +309,8 @@
             "label": "Dest. extra gas",
             "value": "0"
           }
-        ]
+        ],
+        "interpolatedIntent": "Send 2500000000000000000 shares to chain 2"
       }
     },
     {
@@ -324,7 +336,8 @@
             "label": "Valid until",
             "value": "2026-01-01 00:00:00Z"
           }
-        ]
+        ],
+        "interpolatedIntent": "Approve 1234.5 USDC to Centrifuge Vault Router until 2026-01-01 00:00:00Z"
       }
     },
     {

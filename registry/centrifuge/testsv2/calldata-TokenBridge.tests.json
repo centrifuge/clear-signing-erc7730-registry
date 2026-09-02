@@ -57,7 +57,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Bridge 2.5 SHARE to chain 8453"
       }
     }
   ]

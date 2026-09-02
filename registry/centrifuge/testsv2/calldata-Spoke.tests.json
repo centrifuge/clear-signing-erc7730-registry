@@ -50,7 +50,8 @@
             "label": "Amount",
             "value": "1234.5 USDC"
           }
-        ]
+        ],
+        "interpolatedIntent": "Deposit 1234.5 USDC into pool 281474976710657"
       }
     },
     {
@@ -80,7 +81,8 @@
             "label": "Amount",
             "value": "1234.5 USDC"
           }
-        ]
+        ],
+        "interpolatedIntent": "Note a deposit of 1234.5 USDC into pool 281474976710657"
       }
     },
     {
@@ -114,7 +116,8 @@
             "label": "Amount",
             "value": "1234.5 USDC"
           }
-        ]
+        ],
+        "interpolatedIntent": "Withdraw 1234.5 USDC to Alice"
       }
     },
     {
@@ -152,7 +155,8 @@
             "label": "Reason",
             "value": "0x0000000000000000000000000000000000000000000000000000000000000002"
           }
-        ]
+        ],
+        "interpolatedIntent": "Reserve 1234.5 USDC for Bob"
       }
     },
     {
@@ -190,7 +194,8 @@
             "label": "Reason",
             "value": "0x0000000000000000000000000000000000000000000000000000000000000002"
           }
-        ]
+        ],
+        "interpolatedIntent": "Unreserve 1234.5 USDC for Bob"
       }
     },
     {
@@ -232,7 +237,8 @@
             "label": "Reason",
             "value": "0x0000000000000000000000000000000000000000000000000000000000000002"
           }
-        ]
+        ],
+        "interpolatedIntent": "Withdraw 1234.5 USDC reserved by Bob to Alice"
       }
     },
     {
@@ -258,7 +264,8 @@
             "label": "Shares",
             "value": "2500000000000000000"
           }
-        ]
+        ],
+        "interpolatedIntent": "Issue 2500000000000000000 shares to Alice"
       }
     },
     {
@@ -280,7 +287,8 @@
             "label": "Shares",
             "value": "2500000000000000000"
           }
-        ]
+        ],
+        "interpolatedIntent": "Revoke 2500000000000000000 shares of pool 281474976710657"
       }
     },
     {
@@ -306,7 +314,8 @@
             "label": "Shares",
             "value": "2500000000000000000"
           }
-        ]
+        ],
+        "interpolatedIntent": "Withdraw 2500000000000000000 shares to Alice"
       }
     },
     {
@@ -340,7 +349,8 @@
             "label": "Shares",
             "value": "2500000000000000000"
           }
-        ]
+        ],
+        "interpolatedIntent": "Transfer 2500000000000000000 shares from Alice to Bob"
       }
     },
     {
@@ -374,7 +384,8 @@
             "label": "Dest. extra gas",
             "value": "0"
           }
-        ]
+        ],
+        "interpolatedIntent": "Send 2500000000000000000 shares to chain 2"
       }
     },
     {
@@ -424,7 +435,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Send 2500000000000000000 shares of Alice to chain 2"
       }
     },
     {
@@ -450,7 +462,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Register USD Coin on chain 2"
       }
     },
     {
@@ -488,7 +501,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Send a request for asset 5 to the hub"
       }
     },
     {
@@ -518,7 +532,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Submit queued assets for asset 5"
       }
     },
     {
@@ -544,7 +559,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Submit queued shares of pool 281474976710657"
       }
     },
     {
@@ -574,7 +590,8 @@
             "label": "Refund gas to",
             "value": "Alice"
           }
-        ]
+        ],
+        "interpolatedIntent": "Call 0x0000000000000000000000002222222222222222222222222222222222222222 for pool 281474976710657"
       }
     },
     {
