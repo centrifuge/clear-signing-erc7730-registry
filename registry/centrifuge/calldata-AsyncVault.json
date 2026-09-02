@@ -1,0 +1,28 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "includes": "common-AsyncVault.json",
+  "context": {
+    "$id": "Centrifuge Async Vault",
+    "contract": {
+      "deployments": [
+        {
+          "chainId": 1,
+          "address": "0xdeADbeEf00000000000000000000000000000002"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "owner": "Centrifuge",
+    "info": {
+      "url": "https://centrifuge.io"
+    },
+    "contractName": "Centrifuge Async Vault",
+    "constants": {
+      "underlyingToken": "0xdeADBEef000000000000000000000000000000A1",
+      "underlyingTicker": "USDC",
+      "shareToken": "0xdEadbEEF000000000000000000000000000000A2",
+      "vaultTicker": "SHARE"
+    }
+  }
+}

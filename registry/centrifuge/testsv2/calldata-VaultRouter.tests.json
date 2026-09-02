@@ -1,0 +1,331 @@
+{
+  "$schema": "../../../specs/erc7730-tests-v2.schema.json",
+  "descriptor": "../calldata-VaultRouter.json",
+  "dataProvider": {
+    "tokens": {
+      "0xdeADBEef000000000000000000000000000000A1": {
+        "symbol": "USDC",
+        "decimals": 6,
+        "name": "USD Coin"
+      },
+      "0xdEadbEEF000000000000000000000000000000A2": {
+        "symbol": "SHARE",
+        "decimals": 18,
+        "name": "Centrifuge Share Class Token"
+      },
+      "0xdeaDBeEf000000000000000000000000000000B1": {
+        "symbol": "USDC",
+        "decimals": 6,
+        "name": "USD Coin"
+      },
+      "0xDEAdbeEf000000000000000000000000000000B2": {
+        "symbol": "SHARE",
+        "decimals": 18,
+        "name": "Centrifuge Share Class Token"
+      }
+    },
+    "addressNames": {
+      "0x1111111111111111111111111111111111111111": "Alice",
+      "0x2222222222222222222222222222222222222222": "Bob",
+      "0xdeadbeef00000000000000000000000000000001": "Centrifuge Vault Router",
+      "0xdeadbeef00000000000000000000000000000002": "Centrifuge Async Vault",
+      "0xdeadbeef00000000000000000000000000000003": "Centrifuge Sync Deposit Vault",
+      "0xdeadbeef000000000000000000000000000000a1": "USD Coin",
+      "0xdeadbeef000000000000000000000000000000b1": "USD Coin",
+      "0xdeadbeef000000000000000000000000000000a2": "Centrifuge Share Class Token",
+      "0xdeadbeef000000000000000000000000000000b2": "Centrifuge Share Class Token"
+    }
+  },
+  "tests": [
+    {
+      "description": "Enable permissionless claiming on a vault",
+      "rawTx": "0x02f84d01018459682f008506fc23ac00830493e094deadbeef0000000000000000000000000000000180a45bfa1b68000000000000000000000000deadbeef00000000000000000000000000000002c0",
+      "expected": {
+        "intent": "Enable claiming by anyone",
+        "owner": "Centrifuge",
+        "fields": [
+          {
+            "label": "Vault",
+            "value": "Centrifuge Async Vault"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Disable permissionless claiming on a vault",
+      "rawTx": "0x02f84d01028459682f008506fc23ac00830493e094deadbeef0000000000000000000000000000000180a4e6c09edf000000000000000000000000deadbeef00000000000000000000000000000002c0",
+      "expected": {
+        "intent": "Disable claiming by anyone",
+        "owner": "Centrifuge",
+        "fields": [
+          {
+            "label": "Vault",
+            "value": "Centrifuge Async Vault"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Request a deposit through the router",
+      "rawTx": "0x02f8ae01038459682f008506fc23ac00830493e094deadbeef0000000000000000000000000000000180b8846f31b2f2000000000000000000000000deadbeef00000000000000000000000000000002000000000000000000000000000000000000000000000000000000004994f9a000000000000000000000000011111111111111111111111111111111111111110000000000000000000000001111111111111111111111111111111111111111c0",
+      "expected": {
+        "intent": "Request deposit",
+        "owner": "Centrifuge",
+        "fields": [
+          {
+            "label": "Vault",
+            "value": "Centrifuge Async Vault"
+          },
+          {
+            "label": "Deposit amount",
+            "value": "1234500000"
+          },
+          {
+            "label": "Controller",
+            "value": "Alice"
+          },
+          {
+            "label": "Owner of the assets",
+            "value": "Alice"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Deposit into a sync vault through the router",
+      "rawTx": "0x02f8ae01048459682f008506fc23ac00830493e094deadbeef0000000000000000000000000000000180b884c6f1649f000000000000000000000000deadbeef00000000000000000000000000000003000000000000000000000000000000000000000000000000000000004994f9a000000000000000000000000011111111111111111111111111111111111111110000000000000000000000001111111111111111111111111111111111111111c0",
+      "expected": {
+        "intent": "Deposit",
+        "owner": "Centrifuge",
+        "fields": [
+          {
+            "label": "Vault",
+            "value": "Centrifuge Sync Deposit Vault"
+          },
+          {
+            "label": "Deposit amount",
+            "value": "1234500000"
+          },
+          {
+            "label": "Send shares to",
+            "value": "Alice"
+          },
+          {
+            "label": "Owner of the assets",
+            "value": "Alice"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Claim a deposit through the router",
+      "rawTx": "0x02f88e01058459682f008506fc23ac00830493e094deadbeef0000000000000000000000000000000180b86445e0a315000000000000000000000000deadbeef0000000000000000000000000000000200000000000000000000000011111111111111111111111111111111111111110000000000000000000000001111111111111111111111111111111111111111c0",
+      "expected": {
+        "intent": "Claim deposit",
+        "owner": "Centrifuge",
+        "fields": [
+          {
+            "label": "Vault",
+            "value": "Centrifuge Async Vault"
+          },
+          {
+            "label": "Send shares to",
+            "value": "Alice"
+          },
+          {
+            "label": "Controller",
+            "value": "Alice"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Cancel a deposit request through the router",
+      "rawTx": "0x02f84d01068459682f008506fc23ac00830493e094deadbeef0000000000000000000000000000000180a49c2a9481000000000000000000000000deadbeef00000000000000000000000000000002c0",
+      "expected": {
+        "intent": "Cancel deposit request",
+        "owner": "Centrifuge",
+        "fields": [
+          {
+            "label": "Vault",
+            "value": "Centrifuge Async Vault"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Claim a cancelled deposit through the router",
+      "rawTx": "0x02f88e01078459682f008506fc23ac00830493e094deadbeef0000000000000000000000000000000180b86472a2fcca000000000000000000000000deadbeef0000000000000000000000000000000200000000000000000000000011111111111111111111111111111111111111110000000000000000000000001111111111111111111111111111111111111111c0",
+      "expected": {
+        "intent": "Claim cancelled deposit",
+        "owner": "Centrifuge",
+        "fields": [
+          {
+            "label": "Vault",
+            "value": "Centrifuge Async Vault"
+          },
+          {
+            "label": "Send assets to",
+            "value": "Alice"
+          },
+          {
+            "label": "Controller",
+            "value": "Alice"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Request a redemption through the router",
+      "rawTx": "0x02f8ae01088459682f008506fc23ac00830493e094deadbeef0000000000000000000000000000000180b884478f2787000000000000000000000000deadbeef0000000000000000000000000000000200000000000000000000000000000000000000000000000022b1c8c1227a000000000000000000000000000011111111111111111111111111111111111111110000000000000000000000001111111111111111111111111111111111111111c0",
+      "expected": {
+        "intent": "Request redemption",
+        "owner": "Centrifuge",
+        "fields": [
+          {
+            "label": "Vault",
+            "value": "Centrifuge Async Vault"
+          },
+          {
+            "label": "Shares to redeem",
+            "value": "2500000000000000000"
+          },
+          {
+            "label": "Controller",
+            "value": "Alice"
+          },
+          {
+            "label": "Owner of the shares",
+            "value": "Alice"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Claim a redemption through the router",
+      "rawTx": "0x02f88e01098459682f008506fc23ac00830493e094deadbeef0000000000000000000000000000000180b864fa485928000000000000000000000000deadbeef0000000000000000000000000000000200000000000000000000000011111111111111111111111111111111111111110000000000000000000000001111111111111111111111111111111111111111c0",
+      "expected": {
+        "intent": "Claim redemption",
+        "owner": "Centrifuge",
+        "fields": [
+          {
+            "label": "Vault",
+            "value": "Centrifuge Async Vault"
+          },
+          {
+            "label": "Send assets to",
+            "value": "Alice"
+          },
+          {
+            "label": "Controller",
+            "value": "Alice"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Cancel a redemption request through the router",
+      "rawTx": "0x02f84d010a8459682f008506fc23ac00830493e094deadbeef0000000000000000000000000000000180a499998406000000000000000000000000deadbeef00000000000000000000000000000002c0",
+      "expected": {
+        "intent": "Cancel redemption request",
+        "owner": "Centrifuge",
+        "fields": [
+          {
+            "label": "Vault",
+            "value": "Centrifuge Async Vault"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Claim a cancelled redemption through the router",
+      "rawTx": "0x02f88e010b8459682f008506fc23ac00830493e094deadbeef0000000000000000000000000000000180b86411dcd791000000000000000000000000deadbeef0000000000000000000000000000000200000000000000000000000011111111111111111111111111111111111111110000000000000000000000001111111111111111111111111111111111111111c0",
+      "expected": {
+        "intent": "Claim cancelled redemption",
+        "owner": "Centrifuge",
+        "fields": [
+          {
+            "label": "Vault",
+            "value": "Centrifuge Async Vault"
+          },
+          {
+            "label": "Send shares to",
+            "value": "Alice"
+          },
+          {
+            "label": "Controller",
+            "value": "Alice"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Transfer 2.5 shares to Centrifuge chain 2",
+      "rawTx": "0x02f9012f010c8459682f008506fc23ac00830493e094deadbeef0000000000000000000000000000000180b9010404191c9c000000000000000000000000deadbeef0000000000000000000000000000000200000000000000000000000000000000000000000000000022b1c8c1227a0000000000000000000000000000000000000000000000000000000000000000000200000000000000000000000022222222222222222222222222222222222222220000000000000000000000001111111111111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111111111111111111111111111111111111c0",
+      "expected": {
+        "intent": "Transfer shares cross-chain",
+        "owner": "Centrifuge",
+        "fields": [
+          {
+            "label": "Vault",
+            "value": "Centrifuge Async Vault"
+          },
+          {
+            "label": "Shares to transfer",
+            "value": "2500000000000000000"
+          },
+          {
+            "label": "Destination chain",
+            "value": "2"
+          },
+          {
+            "label": "Recipient",
+            "value": "0x0000000000000000000000002222222222222222222222222222222222222222"
+          },
+          {
+            "label": "Owner of the shares",
+            "value": "Alice"
+          },
+          {
+            "label": "Refund gas to",
+            "value": "Alice"
+          },
+          {
+            "label": "Extra gas limit",
+            "value": "0"
+          },
+          {
+            "label": "Dest. extra gas",
+            "value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "description": "Approve 1234.5 USDC to the router by permit signature",
+      "rawTx": "0x02f9010e010d8459682f008506fc23ac00830493e094deadbeef0000000000000000000000000000000180b8e4d505accf000000000000000000000000deadbeef000000000000000000000000000000a1000000000000000000000000deadbeef00000000000000000000000000000001000000000000000000000000000000000000000000000000000000004994f9a0000000000000000000000000000000000000000000000000000000006955b900000000000000000000000000000000000000000000000000000000000000001b00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001c0",
+      "expected": {
+        "intent": "Approve by signature",
+        "owner": "Centrifuge",
+        "fields": [
+          {
+            "label": "Asset",
+            "value": "USD Coin"
+          },
+          {
+            "label": "Amount",
+            "value": "1234.5 USDC"
+          },
+          {
+            "label": "Approve to",
+            "value": "Centrifuge Vault Router"
+          },
+          {
+            "label": "Valid until",
+            "value": "2026-01-01 00:00:00Z"
+          }
+        ]
+      }
+    }
+  ]
+}
