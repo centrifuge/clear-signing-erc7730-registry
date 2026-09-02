@@ -1,0 +1,1395 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "Centrifuge Hub",
+    "contract": {
+      "deployments": [
+        {
+          "chainId": 1,
+          "address": "0xDeadBEeF00000000000000000000000000000010"
+        },
+        {
+          "chainId": 10,
+          "address": "0xDeadBEeF00000000000000000000000000000010"
+        },
+        {
+          "chainId": 56,
+          "address": "0xDeadBEeF00000000000000000000000000000010"
+        },
+        {
+          "chainId": 143,
+          "address": "0xDeadBEeF00000000000000000000000000000010"
+        },
+        {
+          "chainId": 196,
+          "address": "0xDeadBEeF00000000000000000000000000000010"
+        },
+        {
+          "chainId": 999,
+          "address": "0xDeadBEeF00000000000000000000000000000010"
+        },
+        {
+          "chainId": 1672,
+          "address": "0xDeadBEeF00000000000000000000000000000010"
+        },
+        {
+          "chainId": 8453,
+          "address": "0xDeadBEeF00000000000000000000000000000010"
+        },
+        {
+          "chainId": 42161,
+          "address": "0xDeadBEeF00000000000000000000000000000010"
+        },
+        {
+          "chainId": 43114,
+          "address": "0xDeadBEeF00000000000000000000000000000010"
+        },
+        {
+          "chainId": 98866,
+          "address": "0xDeadBEeF00000000000000000000000000000010"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "owner": "Centrifuge",
+    "info": {
+      "url": "https://centrifuge.io"
+    },
+    "contractName": "Centrifuge Hub",
+    "enums": {
+      "accountKind": {
+        "0": "Amount debit",
+        "1": "Amount credit",
+        "2": "Value increase",
+        "3": "Value decrease"
+      },
+      "managerKind": {
+        "0": "Adapter",
+        "1": "Gateway",
+        "2": "Spoke",
+        "3": "Bridger"
+      },
+      "vaultUpdateKind": {
+        "0": "Deploy and link",
+        "1": "Link",
+        "2": "Unlink"
+      }
+    }
+  },
+  "display": {
+    "formats": {
+      "createPool(uint64 poolId, address admin, uint128 currency)": {
+        "intent": "Create pool",
+        "interpolatedIntent": "Create pool {poolId} with admin {admin}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "admin",
+            "label": "Pool admin",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "currency",
+            "label": "Pool currency",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "addShareClass(uint64 poolId, string name, string symbol, bytes32 salt)": {
+        "intent": "Add share class",
+        "interpolatedIntent": "Add share class {symbol} to pool {poolId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "name",
+            "label": "Name",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "symbol",
+            "label": "Symbol",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "salt",
+            "label": "Salt",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "updateShareClassMetadata(uint64 poolId, bytes16 scId, string name, string symbol)": {
+        "intent": "Update share metadata",
+        "interpolatedIntent": "Rename share class to {name} ({symbol})",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "name",
+            "label": "Name",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "symbol",
+            "label": "Symbol",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "setPoolMetadata(uint64 poolId, bytes metadata)": {
+        "intent": "Set pool metadata",
+        "interpolatedIntent": "Set metadata of pool {poolId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "metadata",
+            "label": "Metadata",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "updateCurrency(uint64 poolId, uint128 currency)": {
+        "intent": "Update pool currency",
+        "interpolatedIntent": "Set pool {poolId} currency to {currency}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "currency",
+            "label": "Pool currency",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "updateHubManager(uint64 poolId, address who, bool canManage)": {
+        "intent": "Update hub manager",
+        "interpolatedIntent": "Set hub manager {who} to {canManage}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "who",
+            "label": "Manager",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "canManage",
+            "label": "Can manage",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "updateManager(uint64 poolId, uint16 centrifugeId, uint8 kind, bytes32 who, bool canManage, address refund)": {
+        "intent": "Update manager",
+        "interpolatedIntent": "Set {kind} manager on chain {centrifugeId} to {canManage}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "centrifugeId",
+            "label": "Centrifuge chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "kind",
+            "label": "Manager kind",
+            "format": "enum",
+            "params": {
+              "$ref": "$.metadata.enums.managerKind"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "who",
+            "label": "Manager",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "canManage",
+            "label": "Can manage",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "setPolicy(uint64 poolId, address policy_)": {
+        "intent": "Set pool policy",
+        "interpolatedIntent": "Set pool {poolId} policy to {policy_}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "policy_",
+            "label": "Policy",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "setSpokePolicy(uint64 poolId, uint16 centrifugeId, bytes32 policy_, address refund)": {
+        "intent": "Set spoke policy",
+        "interpolatedIntent": "Set spoke policy on chain {centrifugeId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "centrifugeId",
+            "label": "Centrifuge chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "policy_",
+            "label": "Policy",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "setRequestManager(uint64 poolId, uint16 centrifugeId, address hubManager, bytes32 spokeManager, address refund)": {
+        "intent": "Set request manager",
+        "interpolatedIntent": "Set request manager on chain {centrifugeId} to {hubManager}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "centrifugeId",
+            "label": "Centrifuge chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "hubManager",
+            "label": "Hub manager",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "spokeManager",
+            "label": "Spoke manager",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "setSnapshotHook(uint64 poolId, address hook)": {
+        "intent": "Set snapshot hook",
+        "interpolatedIntent": "Set snapshot hook of pool {poolId} to {hook}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "hook",
+            "label": "Hook",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "setBridgingHook(uint64 poolId, address hook)": {
+        "intent": "Set bridging hook",
+        "interpolatedIntent": "Set bridging hook of pool {poolId} to {hook}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "hook",
+            "label": "Hook",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "setAdapters(uint64 poolId, uint16 centrifugeId, address[] localAdapters, bytes32[] remoteAdapters, uint8 threshold, address refund)": {
+        "intent": "Set adapters",
+        "interpolatedIntent": "Set adapters on chain {centrifugeId} with threshold {threshold}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "centrifugeId",
+            "label": "Centrifuge chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "localAdapters.[]",
+            "label": "Local adapter",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "remoteAdapters.[]",
+            "label": "Remote adapter",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "threshold",
+            "label": "Threshold",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "initiateAuthorization(uint64 poolId, bytes data)": {
+        "intent": "Initiate authorization",
+        "interpolatedIntent": "Initiate an authorization for pool {poolId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "data",
+            "label": "Call data",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "cancelAuthorization(uint64 poolId, bytes data)": {
+        "intent": "Cancel authorization",
+        "interpolatedIntent": "Cancel an authorization for pool {poolId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "data",
+            "label": "Call data",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "authorizeSpokeCall(uint64 poolId, uint16 centrifugeId, bytes data, address refund)": {
+        "intent": "Authorize spoke call",
+        "interpolatedIntent": "Authorize a spoke call on chain {centrifugeId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "centrifugeId",
+            "label": "Centrifuge chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "data",
+            "label": "Call data",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "unauthorizeSpokeCall(uint64 poolId, uint16 centrifugeId, bytes data, address refund)": {
+        "intent": "Unauthorize spoke call",
+        "interpolatedIntent": "Unauthorize a spoke call on chain {centrifugeId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "centrifugeId",
+            "label": "Centrifuge chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "data",
+            "label": "Call data",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "createAccount(uint64 poolId, uint256 account, bool isDebitNormal)": {
+        "intent": "Create account",
+        "interpolatedIntent": "Create account {account} in pool {poolId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "account",
+            "label": "Account ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "isDebitNormal",
+            "label": "Debit normal",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "setAccountMetadata(uint64 poolId, uint256 account, bytes metadata)": {
+        "intent": "Set account metadata",
+        "interpolatedIntent": "Set metadata of account {account}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "account",
+            "label": "Account ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "metadata",
+            "label": "Metadata",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "updateJournal(uint64 poolId, (uint128 value, uint256 accountId)[] debits, (uint128 value, uint256 accountId)[] credits)": {
+        "intent": "Update journal",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "debits.[]",
+            "fields": [
+              {
+                "path": "value",
+                "label": "Debit amount",
+                "format": "raw",
+                "visible": "always"
+              },
+              {
+                "path": "accountId",
+                "label": "Debit account",
+                "format": "raw",
+                "visible": "always"
+              }
+            ]
+          },
+          {
+            "path": "credits.[]",
+            "fields": [
+              {
+                "path": "value",
+                "label": "Credit amount",
+                "format": "raw",
+                "visible": "always"
+              },
+              {
+                "path": "accountId",
+                "label": "Credit account",
+                "format": "raw",
+                "visible": "always"
+              }
+            ]
+          }
+        ]
+      },
+      "initializeHolding(uint64 poolId, bytes16 scId, uint128 assetId, address valuation, uint256[4] accounts)": {
+        "intent": "Initialize holding",
+        "interpolatedIntent": "Initialize holding of asset {assetId} valued by {valuation}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "assetId",
+            "label": "Asset ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "valuation",
+            "label": "Valuation",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "accounts.[]",
+            "label": "Account ID",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "setHoldingAccountId(uint64 poolId, bytes16 scId, uint128 assetId, uint8 kind, uint256 accountId)": {
+        "intent": "Set holding account",
+        "interpolatedIntent": "Point {kind} of asset {assetId} at account {accountId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "assetId",
+            "label": "Asset ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "kind",
+            "label": "Account kind",
+            "format": "enum",
+            "params": {
+              "$ref": "$.metadata.enums.accountKind"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "accountId",
+            "label": "Account ID",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "updateHoldingValuation(uint64 poolId, bytes16 scId, uint128 assetId, address valuation)": {
+        "intent": "Update holding valuation",
+        "interpolatedIntent": "Value holding of asset {assetId} by {valuation}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "assetId",
+            "label": "Asset ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "valuation",
+            "label": "Valuation",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "updateHoldingValue(uint64 poolId, bytes16 scId, uint128 assetId)": {
+        "intent": "Update holding value",
+        "interpolatedIntent": "Revalue holding of asset {assetId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "assetId",
+            "label": "Asset ID",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "updateAccountingAmount(uint64 poolId, bytes16 scId, uint128 assetId, bool isPositive, uint128 diff)": {
+        "intent": "Update holding amount",
+        "interpolatedIntent": "Change amount of asset {assetId} by {diff}, increase {isPositive}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "assetId",
+            "label": "Asset ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "isPositive",
+            "label": "Increase",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "diff",
+            "label": "Amount change",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "updateAccountingValue(uint64 poolId, bytes16 scId, uint128 assetId, bool isPositive, uint128 diff)": {
+        "intent": "Update holding value",
+        "interpolatedIntent": "Change value of asset {assetId} by {diff}, increase {isPositive}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "assetId",
+            "label": "Asset ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "isPositive",
+            "label": "Increase",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "diff",
+            "label": "Value change",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "updateSharePrice(uint64 poolId, bytes16 scId, uint128 pricePoolPerShare)": {
+        "intent": "Update share price",
+        "interpolatedIntent": "Set share price of pool {poolId} to {pricePoolPerShare}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "pricePoolPerShare",
+            "label": "Price per share",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "updateSharePrice(uint64 poolId, bytes16 scId, uint128 pricePoolPerShare, uint64 computedAt)": {
+        "intent": "Update share price",
+        "interpolatedIntent": "Set share price to {pricePoolPerShare} as of {computedAt}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "pricePoolPerShare",
+            "label": "Price per share",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "computedAt",
+            "label": "Computed at",
+            "format": "date",
+            "params": {
+              "encoding": "timestamp"
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "notifyPool(uint64 poolId, uint16 centrifugeId, address refund)": {
+        "intent": "Notify pool",
+        "interpolatedIntent": "Notify pool {poolId} to chain {centrifugeId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "centrifugeId",
+            "label": "Centrifuge chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "notifyShareClass(uint64 poolId, bytes16 scId, uint16 centrifugeId, bytes32 registrar, bytes payload, uint128 extraGasLimit, address refund)": {
+        "intent": "Notify share class",
+        "interpolatedIntent": "Notify share class to chain {centrifugeId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "centrifugeId",
+            "label": "Centrifuge chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "registrar",
+            "label": "Registrar",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "payload",
+            "label": "Payload",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "extraGasLimit",
+            "label": "Extra gas limit",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "notifyShareMetadata(uint64 poolId, bytes16 scId, uint16 centrifugeId, uint128 extraGasLimit, address refund)": {
+        "intent": "Notify share metadata",
+        "interpolatedIntent": "Notify share metadata to chain {centrifugeId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "centrifugeId",
+            "label": "Centrifuge chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "extraGasLimit",
+            "label": "Extra gas limit",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "notifySharePrice(uint64 poolId, bytes16 scId, uint16 centrifugeId, address refund)": {
+        "intent": "Notify share price",
+        "interpolatedIntent": "Notify share price to chain {centrifugeId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "centrifugeId",
+            "label": "Centrifuge chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "notifyAssetPrice(uint64 poolId, bytes16 scId, uint128 assetId, address refund)": {
+        "intent": "Notify asset price",
+        "interpolatedIntent": "Notify price of asset {assetId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "assetId",
+            "label": "Asset ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "updateVault(uint64 poolId, bytes16 scId, uint128 assetId, bytes32 vaultOrFactory, uint8 kind, bytes payload, uint128 extraGasLimit, address refund)": {
+        "intent": "Update vault",
+        "interpolatedIntent": "{kind} a vault for asset {assetId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "assetId",
+            "label": "Asset ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "vaultOrFactory",
+            "label": "Vault or factory",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "kind",
+            "label": "Update kind",
+            "format": "enum",
+            "params": {
+              "$ref": "$.metadata.enums.vaultUpdateKind"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "payload",
+            "label": "Payload",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "extraGasLimit",
+            "label": "Extra gas limit",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "updateRestriction(uint64 poolId, bytes16 scId, uint16 centrifugeId, bytes payload, uint128 extraGasLimit, address refund)": {
+        "intent": "Update restriction",
+        "interpolatedIntent": "Update share restrictions on chain {centrifugeId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "centrifugeId",
+            "label": "Centrifuge chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "payload",
+            "label": "Payload",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "extraGasLimit",
+            "label": "Extra gas limit",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "requestCallback(uint64 poolId, bytes16 scId, uint128 assetId, bytes payload, uint128 extraGasLimit, bool unpaidMode, address refund)": {
+        "intent": "Request callback",
+        "interpolatedIntent": "Send a request callback for asset {assetId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "scId",
+            "label": "Share class",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "assetId",
+            "label": "Asset ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "payload",
+            "label": "Payload",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "extraGasLimit",
+            "label": "Extra gas limit",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "unpaidMode",
+            "label": "Unpaid mode",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "multicall(bytes[] data)": {
+        "intent": "Batch calls",
+        "fields": [
+          {
+            "path": "data.[]",
+            "label": "Call",
+            "format": "calldata",
+            "params": {
+              "calleePath": "@.to"
+            }
+          }
+        ]
+      },
+      "managerCall(uint64 poolId, uint16 centrifugeId, bytes32 target, bytes payload, uint128 extraGasLimit, uint256 localValue, address refund)": {
+        "intent": "Manager call",
+        "interpolatedIntent": "Call {target} on chain {centrifugeId} for pool {poolId}",
+        "fields": [
+          {
+            "path": "poolId",
+            "label": "Pool ID",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "centrifugeId",
+            "label": "Centrifuge chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "target",
+            "label": "Target",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "payload",
+            "label": "Payload",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "extraGasLimit",
+            "label": "Extra gas limit",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "localValue",
+            "label": "Value",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      }
+    }
+  }
+}

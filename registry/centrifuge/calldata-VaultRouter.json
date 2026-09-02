@@ -1,0 +1,584 @@
+{
+  "$schema": "../../specs/erc7730-v2.schema.json",
+  "context": {
+    "$id": "Centrifuge Vault Router",
+    "contract": {
+      "deployments": [
+        {
+          "chainId": 1,
+          "address": "0xdEADbeEF00000000000000000000000000000001"
+        },
+        {
+          "chainId": 10,
+          "address": "0xdEADbeEF00000000000000000000000000000001"
+        },
+        {
+          "chainId": 56,
+          "address": "0xdEADbeEF00000000000000000000000000000001"
+        },
+        {
+          "chainId": 143,
+          "address": "0xdEADbeEF00000000000000000000000000000001"
+        },
+        {
+          "chainId": 196,
+          "address": "0xdEADbeEF00000000000000000000000000000001"
+        },
+        {
+          "chainId": 999,
+          "address": "0xdEADbeEF00000000000000000000000000000001"
+        },
+        {
+          "chainId": 1672,
+          "address": "0xdEADbeEF00000000000000000000000000000001"
+        },
+        {
+          "chainId": 8453,
+          "address": "0xdEADbeEF00000000000000000000000000000001"
+        },
+        {
+          "chainId": 42161,
+          "address": "0xdEADbeEF00000000000000000000000000000001"
+        },
+        {
+          "chainId": 43114,
+          "address": "0xdEADbeEF00000000000000000000000000000001"
+        },
+        {
+          "chainId": 98866,
+          "address": "0xdEADbeEF00000000000000000000000000000001"
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "owner": "Centrifuge",
+    "info": {
+      "url": "https://centrifuge.io"
+    },
+    "contractName": "Centrifuge Vault Router"
+  },
+  "display": {
+    "formats": {
+      "enable(address vault)": {
+        "intent": "Enable claiming by anyone",
+        "interpolatedIntent": "Let anyone claim from {vault}",
+        "fields": [
+          {
+            "path": "vault",
+            "label": "Vault",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "disable(address vault)": {
+        "intent": "Disable claiming by anyone",
+        "interpolatedIntent": "Stop anyone claiming from {vault}",
+        "fields": [
+          {
+            "path": "vault",
+            "label": "Vault",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "requestDeposit(address vault, uint256 amount, address controller, address owner)": {
+        "intent": "Request deposit",
+        "interpolatedIntent": "Request a deposit of {amount} into {vault}",
+        "fields": [
+          {
+            "path": "vault",
+            "label": "Vault",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "amount",
+            "label": "Deposit amount",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "controller",
+            "label": "Controller",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "owner",
+            "label": "Owner of the assets",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "deposit(address vault, uint256 assets, address receiver, address owner)": {
+        "intent": "Deposit",
+        "interpolatedIntent": "Deposit {assets} into {vault}",
+        "fields": [
+          {
+            "path": "vault",
+            "label": "Vault",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "assets",
+            "label": "Deposit amount",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "receiver",
+            "label": "Send shares to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "owner",
+            "label": "Owner of the assets",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "claimDeposit(address vault, address receiver, address controller)": {
+        "intent": "Claim deposit",
+        "interpolatedIntent": "Claim a deposit from {vault} to {receiver}",
+        "fields": [
+          {
+            "path": "vault",
+            "label": "Vault",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "receiver",
+            "label": "Send shares to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "controller",
+            "label": "Controller",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "cancelDepositRequest(address vault)": {
+        "intent": "Cancel deposit request",
+        "interpolatedIntent": "Cancel a deposit request on {vault}",
+        "fields": [
+          {
+            "path": "vault",
+            "label": "Vault",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "claimCancelDepositRequest(address vault, address receiver, address controller)": {
+        "intent": "Claim cancelled deposit",
+        "interpolatedIntent": "Claim a cancelled deposit to {receiver}",
+        "fields": [
+          {
+            "path": "vault",
+            "label": "Vault",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "receiver",
+            "label": "Send assets to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "controller",
+            "label": "Controller",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "requestRedeem(address vault, uint256 amount, address controller, address owner)": {
+        "intent": "Request redemption",
+        "interpolatedIntent": "Request a redemption of {amount} from {vault}",
+        "fields": [
+          {
+            "path": "vault",
+            "label": "Vault",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "amount",
+            "label": "Shares to redeem",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "controller",
+            "label": "Controller",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "owner",
+            "label": "Owner of the shares",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "claimRedeem(address vault, address receiver, address controller)": {
+        "intent": "Claim redemption",
+        "interpolatedIntent": "Claim a redemption from {vault} to {receiver}",
+        "fields": [
+          {
+            "path": "vault",
+            "label": "Vault",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "receiver",
+            "label": "Send assets to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "controller",
+            "label": "Controller",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "cancelRedeemRequest(address vault)": {
+        "intent": "Cancel redemption request",
+        "interpolatedIntent": "Cancel a redemption request on {vault}",
+        "fields": [
+          {
+            "path": "vault",
+            "label": "Vault",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "claimCancelRedeemRequest(address vault, address receiver, address controller)": {
+        "intent": "Claim cancelled redemption",
+        "interpolatedIntent": "Claim a cancelled redemption to {receiver}",
+        "fields": [
+          {
+            "path": "vault",
+            "label": "Vault",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "receiver",
+            "label": "Send shares to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "controller",
+            "label": "Controller",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          }
+        ]
+      },
+      "crosschainTransferShares(address vault, uint128 shares, uint16 centrifugeId, bytes32 receiver, address owner, uint128 extraGasLimit, uint128 remoteExtraGasLimit, address refund)": {
+        "intent": "Transfer shares cross-chain",
+        "interpolatedIntent": "Send {shares} shares to chain {centrifugeId}",
+        "fields": [
+          {
+            "path": "vault",
+            "label": "Vault",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "shares",
+            "label": "Shares to transfer",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "centrifugeId",
+            "label": "Destination chain",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "receiver",
+            "label": "Recipient",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "owner",
+            "label": "Owner of the shares",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "refund",
+            "label": "Refund gas to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "extraGasLimit",
+            "label": "Extra gas limit",
+            "format": "raw",
+            "visible": "always"
+          },
+          {
+            "path": "remoteExtraGasLimit",
+            "label": "Dest. extra gas",
+            "format": "raw",
+            "visible": "always"
+          }
+        ]
+      },
+      "multicall(bytes[] data)": {
+        "intent": "Batch calls",
+        "fields": [
+          {
+            "path": "data.[]",
+            "label": "Call",
+            "format": "calldata",
+            "params": {
+              "calleePath": "@.to"
+            }
+          }
+        ]
+      },
+      "permit(address asset, address spender, uint256 assets, uint256 deadline, uint8 v, bytes32 r, bytes32 s)": {
+        "intent": "Approve by signature",
+        "interpolatedIntent": "Approve {assets} to {spender} until {deadline}",
+        "fields": [
+          {
+            "path": "asset",
+            "label": "Asset",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "token"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "assets",
+            "label": "Amount",
+            "format": "tokenAmount",
+            "params": {
+              "tokenPath": "asset"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "spender",
+            "label": "Approve to",
+            "format": "addressName",
+            "params": {
+              "types": [
+                "eoa",
+                "contract"
+              ]
+            },
+            "visible": "always"
+          },
+          {
+            "path": "deadline",
+            "label": "Valid until",
+            "format": "date",
+            "params": {
+              "encoding": "timestamp"
+            },
+            "visible": "always"
+          },
+          {
+            "path": "v",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "r",
+            "format": "raw",
+            "visible": "never"
+          },
+          {
+            "path": "s",
+            "format": "raw",
+            "visible": "never"
+          }
+        ]
+      }
+    }
+  }
+}
