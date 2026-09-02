@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../specs/erc7730-tests-v2.schema.json",
+  "descriptor": "../calldata-TokenBridge.json",
+  "dataProvider": {
+    "tokens": {
+      "0xdeADBEef000000000000000000000000000000A1": {
+        "symbol": "USDC",
+        "decimals": 6,
+        "name": "USD Coin"
+      },
+      "0xdeADbEEF000000000000000000000000000000c1": {
+        "symbol": "SHARE",
+        "decimals": 18,
+        "name": "Centrifuge Share Class Token"
+      }
+    },
+    "addressNames": {
+      "0x1111111111111111111111111111111111111111": "Alice",
+      "0x2222222222222222222222222222222222222222": "Bob",
+      "0x3333333333333333333333333333333333333333": "Oracle Valuation",
+      "0x4444444444444444444444444444444444444444": "Snapshot Hook",
+      "0x5555555555555555555555555555555555555555": "Std Hub Policy",
+      "0x6666666666666666666666666666666666666666": "LayerZero Adapter",
+      "0x7777777777777777777777777777777777777777": "Batch Request Manager",
+      "0xdeadbeef00000000000000000000000000000010": "Centrifuge Hub",
+      "0xdeadbeef00000000000000000000000000000011": "Centrifuge Spoke",
+      "0xdeadbeef000000000000000000000000000000a1": "USD Coin",
+      "0xdeadbeef00000000000000000000000000000012": "Centrifuge Token Bridge",
+      "0xdeadbeef000000000000000000000000000000c1": "Centrifuge Share Class Token"
+    }
+  },
+  "tests": [
+    {
+      "description": "Bridge 2.5 shares to Base",
+      "rawTx": "0x02f8ce01018459682f008506fc23ac00830493e094deadbeef0000000000000000000000000000001280b8a498242b3f000000000000000000000000deadbeef000000000000000000000000000000c100000000000000000000000000000000000000000000000022b1c8c1227a0000000000000000000000000000222222222222222222222222222222222222222200000000000000000000000000000000000000000000000000000000000021050000000000000000000000001111111111111111111111111111111111111111c0",
+      "expected": {
+        "intent": "Bridge tokens",
+        "owner": "Centrifuge",
+        "fields": [
+          {
+            "label": "Token",
+            "value": "Centrifuge Share Class Token"
+          },
+          {
+            "label": "Amount",
+            "value": "2.5 SHARE"
+          },
+          {
+            "label": "Recipient",
+            "value": "0x0000000000000000000000002222222222222222222222222222222222222222"
+          },
+          {
+            "label": "Destination chain",
+            "value": "8453"
+          },
+          {
+            "label": "Refund gas to",
+            "value": "Alice"
+          }
+        ]
+      }
+    }
+  ]
+}

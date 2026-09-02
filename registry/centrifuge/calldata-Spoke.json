@@ -595,6 +595,19 @@
         },
         {
           "type": "function",
+          "name": "multicall",
+          "inputs": [
+            {
+              "name": "data",
+              "type": "bytes[]",
+              "internalType": "bytes[]"
+            }
+          ],
+          "outputs": [],
+          "stateMutability": "payable"
+        },
+        {
+          "type": "function",
           "name": "managerCall",
           "inputs": [
             {
@@ -1469,6 +1482,19 @@
               ]
             },
             "visible": "always"
+          }
+        ]
+      },
+      "multicall(bytes[] data)": {
+        "intent": "Batch calls",
+        "fields": [
+          {
+            "path": "#.data.[]",
+            "label": "Call",
+            "format": "calldata",
+            "params": {
+              "calleePath": "@.to"
+            }
           }
         ]
       },
